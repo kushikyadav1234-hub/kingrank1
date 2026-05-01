@@ -1,0 +1,157 @@
+// Version: 3.0.0
+type BookmarkEntry__138614198 =
+  {
+    pdfId : PdfId__171464496;
+    timestamp : Timestamp__1069603277;
+    userId : UserId__710183200
+  };
+type BoxId__911155163 = BoxId__934272657;
+type BoxId__934272657 = Text;
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type OldAttemptId__325541893 = Nat;
+type OldDifficulty__758535801 = {#Easy; #Hard; #Medium};
+type OldExamCategory__1024030262 =
+  {
+    #Banking;
+    #Civil_Services;
+    #Defence;
+    #Other : Text;
+    #Railway;
+    #SBI_Clerk;
+    #SSC;
+    #UPP;
+    #UPSI
+  };
+type OldExamId__454519075 = Nat;
+type OldExam__541593514 =
+  {
+    category : OldExamCategory__1024030262;
+    description : Text;
+    id : OldExamId__454519075;
+    name : Text
+  };
+type OldListInternal__142141192<T> =
+  {var blockIndex : Nat; var blocks : [var [var ?T]]; var elementIndex : Nat};
+type OldProgress__441761513 =
+  {
+    answers : [?Nat];
+    savedAt : OldTimestamp__27916213;
+    testId : OldTestId__905380042;
+    userId : OldUserId__580276348
+  };
+type OldQuestionId__387748961 = Nat;
+type OldQuestion__244295114 =
+  {
+    correctIndex : Nat;
+    explanation : ?Text;
+    id : OldQuestionId__387748961;
+    options : [Text];
+    testId : OldTestId__905380042;
+    text : Text
+  };
+type OldTestAttempt__1007079195 =
+  {
+    answers : [?Nat];
+    id : OldAttemptId__325541893;
+    score : Nat;
+    submittedAt : OldTimestamp__27916213;
+    testId : OldTestId__905380042;
+    timeTaken : Nat;
+    totalQ : Nat;
+    userId : OldUserId__580276348
+  };
+type OldTestId__905380042 = Nat;
+type OldTestMeta__79627488 =
+  {
+    difficulty : OldDifficulty__758535801;
+    durationMins : Nat;
+    examId : OldExamId__454519075;
+    id : OldTestId__905380042;
+    name : Text;
+    questionCount : Nat
+  };
+type OldTimestamp__27916213 = Int;
+type OldUserId__580276348 = Principal;
+type PdfId__171464496 = PdfId__498335205;
+type PdfId__498335205 = Text;
+type PdfMeta__677957456 =
+  {
+    boxId : BoxId__911155163;
+    chapterName : Text;
+    downloadUrl : Text;
+    fileSize : Text;
+    id : PdfId__171464496;
+    roomId : RoomId__181518684;
+    title : Text
+  };
+type RecentlyViewed__108986754 =
+  {
+    pdfId : PdfId__171464496;
+    timestamp : Timestamp__1069603277;
+    userId : UserId__710183200
+  };
+type RoomId__181518684 = RoomId__905989824;
+type RoomId__905989824 = Text;
+type Timestamp__1069603277 = Timestamp__301639476;
+type Timestamp__301639476 = Int;
+type UserId__158757552 = Principal;
+type UserId__710183200 = UserId__158757552;
+actor ({
+  in attemptCounter : {var count : Nat};
+  in attempts : OldListInternal__142141192<OldTestAttempt__1007079195>;
+  stable bookmarks :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?BookmarkEntry__138614198]];
+      var elementIndex : Nat__490723111
+    };
+  in exams : OldListInternal__142141192<OldExam__541593514>;
+  stable pdfs :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PdfMeta__677957456]];
+      var elementIndex : Nat__490723111
+    };
+  in progressMap :
+    Map__605269027<(OldUserId__580276348, OldTestId__905380042),
+                    OldProgress__441761513>;
+  in questions : OldListInternal__142141192<OldQuestion__244295114>;
+  stable recent :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?RecentlyViewed__108986754]];
+      var elementIndex : Nat__490723111
+    };
+  in tests : OldListInternal__142141192<OldTestMeta__79627488>
+}, {
+  stable bookmarks :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?BookmarkEntry__138614198]];
+      var elementIndex : Nat__490723111
+    };
+  stable pdfs :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PdfMeta__677957456]];
+      var elementIndex : Nat__490723111
+    };
+  stable recent :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?RecentlyViewed__108986754]];
+      var elementIndex : Nat__490723111
+    }
+}) ;

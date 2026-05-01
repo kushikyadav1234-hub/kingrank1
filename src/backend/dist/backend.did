@@ -1,0 +1,38 @@
+type RoomSummary = 
+ record {
+   boxCount: nat;
+   id: RoomId;
+   name: text;
+   pdfCount: nat;
+ };
+type RoomId = text;
+type PdfMeta = 
+ record {
+   boxId: BoxId;
+   chapterName: text;
+   downloadUrl: text;
+   fileSize: text;
+   id: PdfId;
+   roomId: RoomId;
+   title: text;
+ };
+type PdfId = text;
+type BoxSummary = 
+ record {
+   id: BoxId;
+   name: text;
+   pdfCount: nat;
+ };
+type BoxId = text;
+service : {
+  addBookmark: (pdfId: PdfId) -> (bool);
+  getAllRooms: () -> (vec RoomSummary) query;
+  getBookmarks: () -> (vec PdfMeta) query;
+  getBoxesByRoom: (roomId: RoomId) -> (vec BoxSummary) query;
+  getPdfsByBox: (roomId: RoomId, boxId: BoxId) -> (vec PdfMeta) query;
+  getPdfsByRoom: (roomId: RoomId) -> (vec PdfMeta) query;
+  getRecentlyViewed: () -> (vec PdfMeta) query;
+  markViewed: (pdfId: PdfId) -> ();
+  removeBookmark: (pdfId: PdfId) -> (bool);
+  searchPdfs: (searchQuery: text) -> (vec PdfMeta) query;
+}

@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk";
+    --font-body: "DM Sans";
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 0.75rem;
+
+    /* Dark-first palette — KingRank1 exam platform */
+    --background: 0.145 0.012 265;
+    --foreground: 0.96 0.008 260;
+    --card: 0.185 0.014 265;
+    --card-foreground: 0.96 0.008 260;
+    --popover: 0.22 0.016 265;
+    --popover-foreground: 0.96 0.008 260;
+
+    /* Blue primary — active states, CTAs */
+    --primary: 0.62 0.2 255;
+    --primary-foreground: 0.98 0.005 260;
+
+    --secondary: 0.24 0.018 265;
+    --secondary-foreground: 0.88 0.008 260;
+    --muted: 0.22 0.014 265;
+    --muted-foreground: 0.52 0.01 265;
+
+    --accent: 0.62 0.2 255;
+    --accent-foreground: 0.98 0.005 260;
+
+    --destructive: 0.56 0.22 25;
+    --destructive-foreground: 0.97 0.01 25;
+
+    --border: 0.26 0.018 265;
+    --input: 0.26 0.018 265;
+    --ring: 0.62 0.2 255;
+
+    /* Semantic result colors */
+    --correct: 0.6 0.19 150;
+    --incorrect: 0.56 0.22 25;
+    --skipped: 0.74 0.16 88;
+
+    --chart-1: 0.6 0.19 150;
+    --chart-2: 0.56 0.22 25;
+    --chart-3: 0.74 0.16 88;
+    --chart-4: 0.62 0.2 255;
+    --chart-5: 0.65 0.16 195;
+
+    --sidebar: 0.185 0.014 265;
+    --sidebar-foreground: 0.96 0.008 260;
+    --sidebar-primary: 0.62 0.2 255;
+    --sidebar-primary-foreground: 0.98 0.005 260;
+    --sidebar-accent: 0.22 0.014 265;
+    --sidebar-accent-foreground: 0.88 0.008 260;
+    --sidebar-border: 0.26 0.018 265;
+    --sidebar-ring: 0.62 0.2 255;
+
+    --success: 0.6 0.19 150;
+    --warning: 0.74 0.16 88;
+
+    /* Room category accent colors — House with Rooms design (8 rooms) */
+    --room-ssc: 0.62 0.2 255;
+    --room-railway: 0.68 0.18 45;
+    --room-civil: 0.55 0.18 290;
+    --room-banking: 0.6 0.17 185;
+    --room-defence: 0.56 0.22 25;
+    --room-current-affairs: 0.65 0.2 200;
+    --room-ncert: 0.65 0.18 135;
+    --room-other: 0.65 0.15 75;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Segment control active pill */
+  .segment-active {
+    @apply bg-primary text-primary-foreground shadow-sm;
+  }
+
+  /* Navigation dot indicators */
+  .nav-dot-flagged {
+    @apply bg-[oklch(var(--skipped)/1)];
+  }
+
+  .nav-dot-unattempted {
+    @apply bg-muted;
+  }
+
+  /* Safe area padding for bottom nav */
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Alias used in Layout main padding */
+  .pb-safe {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4rem);
+  }
+
+  /* Gradient brand */
+  .brand-gradient {
+    @apply bg-gradient-to-r from-primary to-[oklch(0.7_0.18_210)];
+  }
+
+  /* Room card gradients — vibrant, saturated per design reference */
+  .room-gradient-ssc {
+    @apply bg-gradient-to-br from-[oklch(0.45_0.22_255)] to-[oklch(0.3_0.18_265)];
+  }
+
+  .room-gradient-railway {
+    @apply bg-gradient-to-br from-[oklch(0.55_0.2_45)] to-[oklch(0.38_0.18_30)];
+  }
+
+  .room-gradient-civil {
+    @apply bg-gradient-to-br from-[oklch(0.42_0.2_290)] to-[oklch(0.3_0.17_300)];
+  }
+
+  .room-gradient-banking {
+    @apply bg-gradient-to-br from-[oklch(0.48_0.18_185)] to-[oklch(0.32_0.15_190)];
+  }
+
+  .room-gradient-defence {
+    @apply bg-gradient-to-br from-[oklch(0.45_0.22_25)] to-[oklch(0.3_0.18_15)];
+  }
+
+  .room-gradient-current-affairs {
+    @apply bg-gradient-to-br from-[oklch(0.5_0.2_200)] to-[oklch(0.35_0.16_215)];
+  }
+
+  .room-gradient-ncert {
+    @apply bg-gradient-to-br from-[oklch(0.5_0.2_135)] to-[oklch(0.35_0.16_145)];
+  }
+
+  .room-gradient-other {
+    @apply bg-gradient-to-br from-[oklch(0.55_0.18_75)] to-[oklch(0.4_0.15_60)];
+  }
+
+  /* Room accent borders */
+  .room-border-ssc {
+    @apply border-l-4 border-[oklch(var(--room-ssc)/0.6)];
+  }
+
+  .room-border-railway {
+    @apply border-l-4 border-[oklch(var(--room-railway)/0.6)];
+  }
+
+  .room-border-civil {
+    @apply border-l-4 border-[oklch(var(--room-civil)/0.6)];
+  }
+
+  .room-border-banking {
+    @apply border-l-4 border-[oklch(var(--room-banking)/0.6)];
+  }
+
+  .room-border-defence {
+    @apply border-l-4 border-[oklch(var(--room-defence)/0.6)];
+  }
+
+  .room-border-current-affairs {
+    @apply border-l-4 border-[oklch(var(--room-current-affairs)/0.6)];
+  }
+
+  .room-border-ncert {
+    @apply border-l-4 border-[oklch(var(--room-ncert)/0.6)];
+  }
+
+  .room-border-other {
+    @apply border-l-4 border-[oklch(var(--room-other)/0.6)];
+  }
+
+  /* Sub-exam box accent indicators */
+  .sub-exam-accent-ssc {
+    @apply text-[oklch(var(--room-ssc)/1)];
+  }
+
+  .sub-exam-accent-railway {
+    @apply text-[oklch(var(--room-railway)/1)];
+  }
+
+  .sub-exam-accent-civil {
+    @apply text-[oklch(var(--room-civil)/1)];
+  }
+
+  .sub-exam-accent-banking {
+    @apply text-[oklch(var(--room-banking)/1)];
+  }
+
+  .sub-exam-accent-defence {
+    @apply text-[oklch(var(--room-defence)/1)];
+  }
+
+  .sub-exam-accent-current-affairs {
+    @apply text-[oklch(var(--room-current-affairs)/1)];
+  }
+
+  .sub-exam-accent-ncert {
+    @apply text-[oklch(var(--room-ncert)/1)];
+  }
+
+  .sub-exam-accent-other {
+    @apply text-[oklch(var(--room-other)/1)];
+  }
+
+  /* Room expand animation */
+  @keyframes room-expand {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .room-expand {
+    animation: room-expand 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "overview": "KingRank1 is a modern PDF education library for competitive exam preparation. Browse 8 categories of study materials — from SSC and Railway to NCERT Books — with chapter-wise PDFs you can view, download, search, and bookmark.",
+  "features": [
+    "8-room home grid with colorful gradient cards for SSC, Railway, Civil Services, Banking, Defence, Current Affairs, NCERT, and Other Books",
+    "Chapter-wise PDF browsing with View and Download buttons per PDF",
+    "Search PDFs across all categories instantly",
+    "Bookmark favorite PDFs and track recently viewed materials",
+    "Download progress indicator for each PDF",
+    "Dark mode UI with smooth animations",
+    "Banner, Interstitial, and Rewarded ad slots with placeholder IDs ready to swap"
+  ],
+  "category": "education",
+  "tags": [
+    "education",
+    "pdf",
+    "competitive-exams",
+    "study",
+    "dark-mode",
+    "books"
+  ],
+  "last_updated": "2026-05-01T08:49:51.175Z"
+}
